@@ -12,4 +12,8 @@ export class FirstComponent {
   showAlert() {
     alert('Click detecté ');
   }
+
+  traitementDuParent(msg) {
+    alert(msg);
+  }
 }

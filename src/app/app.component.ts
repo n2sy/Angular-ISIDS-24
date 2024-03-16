@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ISIDS-24';
+
+  traitementDuApp(msg) {
+    this.title = msg;
+  }
 }

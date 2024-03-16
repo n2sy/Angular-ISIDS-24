@@ -5,3 +5,10 @@
 <button (click)="showAlert()">Click me</button>
 
 <input [(ngModel)]="prenom" type="text" />
+
+<hr />
+
+<app-child
+  (childEvent)="traitementDuParent($event)"
+  [childColor]="cl"
+></app-child>
