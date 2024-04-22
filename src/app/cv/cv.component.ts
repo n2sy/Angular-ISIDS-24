@@ -1,18 +1,25 @@
 import { Component } from '@angular/core';
 import { Candidat } from '../models/candidat';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
 
 @Component({
   selector: 'app-cv',
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
+  providers: [GestionCandidatsService],
 })
 export class CvComponent {
-  tabCandidats: Candidat[] = [
-    new Candidat(1, 'Mehdi', 'Jeljli', 26, 'ingénieur', 'bart.jpeg'),
-    new Candidat(2, 'Majdi', 'Hosni', 24, 'directeur', 'homer.png'),
-    new Candidat(3, 'Nicole', 'AlKassas', 21, 'Designer', 'lisa.png'),
-  ];
+  fullname = 'karima gharbi';
+  d = new Date();
+  tabCandidats: Candidat[] = [];
   selectedCandidat: Candidat;
+
+  constructor(private candSer: GestionCandidatsService) {}
+  //candSer = inject(GestionCandidatsService);
+
+  ngOnInit() {
+    this.tabCandidats = this.candSer.getAllCandidats();
+  }
 
   RecupererCandidat(cand) {
     console.log(cand);
