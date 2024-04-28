@@ -6,7 +6,6 @@ import { GestionCandidatsService } from '../services/gestion-candidats.service';
   selector: 'app-cv',
   templateUrl: './cv.component.html',
   styleUrl: './cv.component.css',
-  providers: [GestionCandidatsService],
 })
 export class CvComponent {
   fullname = 'karima gharbi';

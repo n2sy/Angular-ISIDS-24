@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Candidat } from '../models/candidat';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class GestionCandidatsService {
   private allCandidats: Candidat[] = [
     new Candidat(1, 'Mehdi', 'Jeljli', 26, 'ingénieur', 'bart.jpeg'),
@@ -11,6 +13,14 @@ export class GestionCandidatsService {
 
   getAllCandidats() {
     return this.allCandidats;
+  }
+  getCandidatById(id) {
+    return this.allCandidats.find((cand) => cand.id == id);
+  }
+
+  deleteCandidat(id) {
+    let i = this.allCandidats.findIndex((cand) => cand.id == id);
+    this.allCandidats.splice(i, 1);
   }
   constructor() {}
 }

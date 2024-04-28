@@ -1,0 +1,14 @@
+<form #f="ngForm">
+  <label>Prénom</label>
+  <input type="text" ngModel name="prenom" class="form-control" />
+  <label>Nom</label>
+  <input ngModel name="nom" type="text" class="form-control" />
+
+  <button (click)="submitHandler(f)" type="submit" class="btn btn-primary">
+    Ajouter Candidat
+  </button>
+
+  <pre>
+    {{ f.value | json }}
+  </pre>
+</form>
