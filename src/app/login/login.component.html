@@ -1,1 +1,20 @@
-<p>login works!</p>
+@if(showError) {
+<div class="alert alert-danger">Identifiant et/ou mot de passe invalide(s)</div>
+
+}
+
+<form #f="ngForm">
+  <label>Identifiant</label>
+  <input type="text" ngModel required name="identifiant" class="form-control" />
+  <label>Mot de passe</label>
+  <input ngModel name="password" type="text" class="form-control" />
+
+  <button (click)="onSubmit(f)" type="submit" class="btn btn-primary">
+    Se connecter
+  </button>
+
+  <pre>
+      {{ f.value | json }}
+    </pre
+  >
+</form>

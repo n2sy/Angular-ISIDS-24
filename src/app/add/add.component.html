@@ -1,8 +1,14 @@
 <form #f="ngForm">
   <label>Prénom</label>
-  <input type="text" ngModel name="prenom" class="form-control" />
+  <input type="text" ngModel required name="prenom" class="form-control" />
   <label>Nom</label>
   <input ngModel name="nom" type="text" class="form-control" />
+  <label>Age</label>
+  <input ngModel name="age" type="number" class="form-control" />
+  <label>Profession</label>
+  <input ngModel name="profession" type="text" class="form-control" />
+  <label>Avatar</label>
+  <input ngModel name="avatar" type="text" class="form-control" />
 
   <button (click)="submitHandler(f)" type="submit" class="btn btn-primary">
     Ajouter Candidat

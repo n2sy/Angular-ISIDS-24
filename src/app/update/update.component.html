@@ -1,1 +1,47 @@
-<p>update works!</p>
+<form #f="ngForm">
+  <label>Prénom</label>
+  <input
+    type="text"
+    [ngModel]="candidatToEdit.prenom"
+    required
+    name="prenom"
+    class="form-control"
+  />
+  <label>Nom</label>
+  <input
+    [ngModel]="candidatToEdit.nom"
+    name="nom"
+    type="text"
+    class="form-control"
+  />
+  <label>Age</label>
+  <input
+    [ngModel]="candidatToEdit.age"
+    name="age"
+    type="number"
+    class="form-control"
+  />
+  <label>Profession</label>
+  <input
+    [ngModel]="candidatToEdit.profession"
+    name="profession"
+    type="text"
+    class="form-control"
+  />
+  <label>Avatar</label>
+  <input
+    [ngModel]="candidatToEdit.avatar"
+    name="avatar"
+    type="text"
+    class="form-control"
+  />
+
+  <button (click)="submitHandler(f)" type="submit" class="btn btn-primary">
+    Mettre à jour
+  </button>
+
+  <pre>
+      {{ f.value | json }}
+    </pre
+  >
+</form>

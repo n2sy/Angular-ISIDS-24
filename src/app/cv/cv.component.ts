@@ -17,7 +17,7 @@ export class CvComponent {
   //candSer = inject(GestionCandidatsService);
 
   ngOnInit() {
-    this.tabCandidats = this.candSer.getAllCandidats();
+    // this.tabCandidats = this.candSer.getAllCandidats();
   }
 
   RecupererCandidat(cand) {

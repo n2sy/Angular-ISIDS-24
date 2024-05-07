@@ -26,8 +26,16 @@ export class InfosComponent {
     //Version avec Observable
     this.actRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.selectedCand = this.candSer.getCandidatById(p.get('id'));
-        if (!this.selectedCand) this.router.navigateByUrl('/not-found');
+        this.candSer.getCandidatByIdAPI(p.get('id')).subscribe({
+          next: (data: Candidat) => {
+            console.log(p.get('id'), data);
+
+            this.selectedCand = data;
+          },
+          error: (err) => {
+            this.router.navigateByUrl('/not-found');
+          },
+        });
       },
       // error : () => {
 
@@ -40,8 +48,15 @@ export class InfosComponent {
 
   onDelete() {
     if (confirm('Etes-vous sûr de vouloir supprimer ce candidat ?')) {
-      this.candSer.deleteCandidat(this.selectedCand.id);
-      this.router.navigateByUrl('/cv');
+      this.candSer.deleteCandidatAPI(this.selectedCand.id).subscribe({
+        next: (response) => {
+          alert(response['message']);
+          this.router.navigateByUrl('/cv');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
     }
   }
 }

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Candidat } from '../models/candidat';
+import { GestionCandidatsService } from '../services/gestion-candidats.service';
 
 @Component({
   selector: 'app-liste',
@@ -7,8 +8,22 @@ import { Candidat } from '../models/candidat';
   styleUrl: './liste.component.css',
 })
 export class ListeComponent {
-  @Input() allCandidats: Candidat[];
+  allCandidats: Candidat[];
   @Output() msgToCv = new EventEmitter();
+
+  constructor(private candSer: GestionCandidatsService) {}
+  ngOnInit() {
+    this.candSer.getAllCandidatsAPI().subscribe({
+      next: (data: Candidat[]) => {
+        this.allCandidats = data;
+      },
+      error: (err) => {
+        alert('Problème...Données fictives chargées!');
+        this.allCandidats = this.candSer.getAllCandidats();
+        console.log(err);
+      },
+    });
+  }
 
   sendCandidatToCv(cand) {
     this.msgToCv.emit(cand);
